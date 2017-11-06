@@ -4,6 +4,16 @@ require 'pry'
 Product.destroy_all
 Productcategory.destroy_all
 Productsubcategory.destroy_all
+Productreview.destroy_all
+Productinventory.destroy_all
+Productlistpricehistory.destroy_all
+Salesterritory.destroy_all
+Salesperson.destroy_all
+Store.destroy_all
+Salesorderheader.destroy_all
+Salesorderdetail.destroy_all
+Salesreason.destroy_all
+Salesorderheadersalesreason.destroy_all
 
 productcategories = CSV.foreach "./db/csv/productcategory.csv", headers: true, header_converters: :symbol
 productsubcategories = CSV.foreach "./db/csv/productsubcategory.csv", headers: true, header_converters: :symbol
