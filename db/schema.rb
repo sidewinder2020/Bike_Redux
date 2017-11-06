@@ -23,14 +23,13 @@ ActiveRecord::Schema.define(version: 20171106020715) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "productinventories", force: :cascade do |t|
-    t.bigint "product_id"
-    t.integer "quantity"
-    t.integer "rowguid"
+  create_table "productinventories", id: false, force: :cascade do |t|
+    t.bigint "id"
+    t.bigint "productid"
+    t.string "rowguid"
     t.date "modifieddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_productinventories_on_product_id"
   end
 
   create_table "productlistpricehistories", force: :cascade do |t|
@@ -122,7 +121,6 @@ ActiveRecord::Schema.define(version: 20171106020715) do
   end
 
   create_table "salespeople", force: :cascade do |t|
-    t.integer "businessentitid"
     t.bigint "salesterritory_id"
     t.decimal "bonus"
     t.decimal "commissionpct"
@@ -156,7 +154,6 @@ ActiveRecord::Schema.define(version: 20171106020715) do
   end
 
   create_table "stores", force: :cascade do |t|
-    t.integer "businessentity"
     t.string "name"
     t.bigint "salesperson_id"
     t.string "rowguid"
@@ -176,7 +173,6 @@ ActiveRecord::Schema.define(version: 20171106020715) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "productinventories", "products"
   add_foreign_key "productlistpricehistories", "products"
   add_foreign_key "productreviews", "products"
   add_foreign_key "products", "productsubcategories"

@@ -1,19 +1,19 @@
 require 'csv'
 require 'pry'
 
-Product.destroy_all
-Productcategory.destroy_all
-Productsubcategory.destroy_all
-Productreview.destroy_all
-Productinventory.destroy_all
-Productlistpricehistory.destroy_all
-Salesterritory.destroy_all
-Salesperson.destroy_all
-Store.destroy_all
-Salesorderheader.destroy_all
-Salesorderdetail.destroy_all
-Salesreason.destroy_all
+# Productinventory.destroy_all
 Salesorderheadersalesreason.destroy_all
+Salesreason.destroy_all
+Salesorderdetail.destroy_all
+Salesorderheader.destroy_all
+Store.destroy_all
+Salesperson.destroy_all
+Salesterritory.destroy_all
+Productlistpricehistory.destroy_all
+Productreview.destroy_all
+Product.destroy_all
+Productsubcategory.destroy_all
+Productcategory.destroy_all
 
 productcategories = CSV.foreach "./db/csv/productcategory.csv", headers: true, header_converters: :symbol
 productsubcategories = CSV.foreach "./db/csv/productsubcategory.csv", headers: true, header_converters: :symbol
@@ -67,15 +67,14 @@ productinventories.each do |row|
 end
 puts "finished productinventories"
 
-# productlistpricehistories.each do |row|
-#   productlistpricehistory = row.to_hash
-#   productlistpricehistory[:startdate] = Date.parse(row[:startdate])
-#   productlistpricehistory[:enddate] = Date.parse(row[:enddate]) if row[:enddate]
-#   productlistpricehistory[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
-#   Productlistpricehistory.create!(productlistpricehistory)
-# end
-# puts "finished productlistpricehistory"
-# no id, only a foreign key productid
+productlistpricehistories.each do |row|
+  productlistpricehistory = row.to_hash
+  productlistpricehistory[:startdate] = Date.parse(row[:startdate])
+  productlistpricehistory[:enddate] = Date.parse(row[:enddate]) if row[:enddate]
+  productlistpricehistory[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Productlistpricehistory.create!(productlistpricehistory)
+end
+puts "finished productlistpricehistory"
 
 salesterritories.each do |row|
   salesterritory = row.to_hash
@@ -91,17 +90,16 @@ salespeople.each do |row|
 end
 puts "finished salesperson"
 
-# stores.each do |row|
-#   store = row.to_hash
-#   store[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
-#   Store.create!(store)
-# end
-# puts "finished stores"
-# here, there are both businessentitids and salesperson ids, and in salesperson, the businessentity id is acting as the salesperson id - ALSO there is no primary id here
+stores.each do |row|
+  store = row.to_hash
+  store[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Store.create!(store)
+end
+puts "finished stores"
 
 salesorderheaders.each do |row|
   salesorderheader = row.to_hash
-  salesorderheader[:orderdate] = Date.parse(row[:orderdate])]
+  salesorderheader[:orderdate] = Date.parse(row[:orderdate]) if row[:orderdate]
   salesorderheader[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
   Salesorderheader.create!(salesorderheader)
 end
@@ -121,10 +119,9 @@ salesreasons.each do |row|
 end
 puts "finished salesreasons"
 
-# salesorderheadersalesreasons.each do |row|
-#   salesorderheadersalesreason = row.to_hash
-#   salesorderheadersalesreason[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
-#   Salesorderheadersalesreason.create!(salesorderheadersalesreason)
-# end
-# puts "finished salesorderheadersalesreason"
-#no primary id :(
+salesorderheadersalesreasons.each do |row|
+  salesorderheadersalesreason = row.to_hash
+  salesorderheadersalesreason[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Salesorderheadersalesreason.create!(salesorderheadersalesreason)
+end
+puts "finished salesorderheadersalesreason"

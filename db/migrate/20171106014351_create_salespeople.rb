@@ -1,7 +1,6 @@
 class CreateSalespeople < ActiveRecord::Migration[5.1]
   def change
     create_table :salespeople do |t|
-      t.integer :businessentitid
       t.references :salesterritory, foreign_key: true
       t.numeric :bonus
       t.numeric :commissionpct
