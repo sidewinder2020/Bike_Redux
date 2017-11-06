@@ -42,3 +42,79 @@ product.each do |row|
   Product.create!(product)
 end
 puts "finished products"
+
+productreviews.each do |row|
+  productreview = row.to_hash
+  productreview[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Productreview.create!(productreview)
+end
+puts "finished productreviews"
+
+productinventories.each do |row|
+  productinventory = row.to_hash
+  productinventory[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Productinventory.create!(productinventory)
+end
+puts "finished productinventories"
+
+# productlistpricehistories.each do |row|
+#   productlistpricehistory = row.to_hash
+#   productlistpricehistory[:startdate] = Date.parse(row[:startdate])
+#   productlistpricehistory[:enddate] = Date.parse(row[:enddate]) if row[:enddate]
+#   productlistpricehistory[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+#   Productlistpricehistory.create!(productlistpricehistory)
+# end
+# puts "finished productlistpricehistory"
+# no id, only a foreign key productid
+
+salesterritories.each do |row|
+  salesterritory = row.to_hash
+  salesterritory[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Salesterritory.create!(salesterritory)
+end
+puts "finished salesterritory"
+
+salespeople.each do |row|
+  salesperson = row.to_hash
+  salesperson[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Salesperson.create!(salesperson)
+end
+puts "finished salesperson"
+
+# stores.each do |row|
+#   store = row.to_hash
+#   store[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+#   Store.create!(store)
+# end
+# puts "finished stores"
+# here, there are both businessentitids and salesperson ids, and in salesperson, the businessentity id is acting as the salesperson id - ALSO there is no primary id here
+
+salesorderheaders.each do |row|
+  salesorderheader = row.to_hash
+  salesorderheader[:orderdate] = Date.parse(row[:orderdate])]
+  salesorderheader[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Salesorderheader.create!(salesorderheader)
+end
+puts "finished salesorderheaders"
+
+salesorderdetails.each do |row|
+  salesorderdetail = row.to_hash
+  salesorderdetail[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Salesorderdetail.create!(salesorderdetail)
+end
+puts "finished salesorderdetails"
+
+salesreasons.each do |row|
+  salesreason = row.to_hash
+  salesreason[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+  Salesreason.create!(salesreason)
+end
+puts "finished salesreasons"
+
+# salesorderheadersalesreasons.each do |row|
+#   salesorderheadersalesreason = row.to_hash
+#   salesorderheadersalesreason[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+#   Salesorderheadersalesreason.create!(salesorderheadersalesreason)
+# end
+# puts "finished salesorderheadersalesreason"
+#no primary id :(
