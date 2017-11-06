@@ -1,7 +1,6 @@
 class CreateProducts < ActiveRecord::Migration[5.1]
   def change
     create_table :products do |t|
-      t.integer :productid
       t.string :name
       t.numeric :standardcost
       t.numeric :listprice
@@ -10,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.date :sellstartdate
       t.date :sellenddate
       t.date :discontinueddate
-      t.integer :rowguid
+      t.string :rowguid
       t.date :modifieddate
 
       t.timestamps
