@@ -1,4 +1,4 @@
-productid,name,standardcost,listprice,daystomanufacture,productsubcategoryid,sellstartdate,endstartdate,discontinueddate,rowguid,modifieddate
+id,name,standardcost,listprice,daystomanufacture,productsubcategory_id,sellstartdate,sellenddate,discontinueddate,rowguid,modifieddate
 1,Adjustable Race,0,0,0,,2008-04-30 00:00:00.000000,,,694215b7-08f7-4c0d-acb1-d734ba44c0c8,2014-02-08 10:01:36.827000
 2,Bearing Ball,0,0,0,,2008-04-30 00:00:00.000000,,,58ae3c20-4f3a-4749-a7d4-d568806cc537,2014-02-08 10:01:36.827000
 3,BB Ball Bearing,0,0,1,,2008-04-30 00:00:00.000000,,,9c21aed2-5bfa-4f18-bcb8-f11638dc2e4e,2014-02-08 10:01:36.827000

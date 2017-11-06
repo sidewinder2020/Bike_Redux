@@ -1,3 +1,4 @@
+id,productcategory_id,name,rowguid,modifieddate
 1,1,Mountain Bikes,2d364ade-264a-433c-b092-4fcbf3804e01,2008-04-30 00:00:00.000000
 2,1,Road Bikes,000310c0-bcc8-42c4-b0c3-45ae611af06b,2008-04-30 00:00:00.000000
 3,1,Touring Bikes,02c5061d-ecdc-4274-b5f1-e91d76bc3f37,2008-04-30 00:00:00.000000
