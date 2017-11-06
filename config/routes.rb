@@ -15,6 +15,8 @@ Rails.application.routes.draw do
         get "most_popular", to: "most_popular#index"
         get "product_comments", to: "product_comments#index"
         get "worst_performing_category", to: "worst_performing_category#show"
+        get "number_in_inventory", to: "number_in_inventory#show"
+
        end
 
        namespace :sales do
