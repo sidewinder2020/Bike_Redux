@@ -15,27 +15,32 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top navbar-custom" style="background-color: #FFFFF0;">
-      <a class="navbar-brand" href="/">Between the Spreadsheets</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Between the Spreadsheets</a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Analytic Types</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/gross_analytics">Finished Baskets</a>
-                <a class="dropdown-item" href="/store_search">Basket Making Supplies</a>
-              </div>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Analytics
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/gross_analytics">Gross Analytics</a>
+              <a class="dropdown-item" href="/store_search">Single Store Analytics</a>
+            </div>
           </li>
         </ul>
-        <% if current_user %>
-          <button class="btn btn-link" type="button" name="logout"><%= link_to "Sign out", signout_path, id: "sign_out" %></button>
+          <% if current_user %>
             <span class="navbar-text">Logged in as <%= current_user.name %></span>
-        <% else %>
-          <a class="nav-link" href="/login"><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %><span class="sr-only">(current)</span></a>
-        <% end %>
+            <button class="btn btn-link" type="button" name="logout"><%= link_to "Sign out", signout_path, id: "sign_out" %></button>
+          <% else %>
+            <a class="nav-link" href="/login"><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %><span class="sr-only">(current)</span></a>
+          <% end %>
       </div>
     </nav>
 
