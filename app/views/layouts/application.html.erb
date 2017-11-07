@@ -4,21 +4,44 @@
     <title>BikeRedux</title>
     <%= csrf_meta_tags %>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-     <div>
-       <% if current_user %>
-         Signed in as <strong><%= current_user.name %></strong>!
-         <%= link_to "Sign out", signout_path, id: "sign_out" %>
-       <% else %>
-         <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-       <% end %>
-     </div>
-     <div>
-    <%= yield %>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top navbar-custom" style="background-color: #FFFFF0;">
+      <a class="navbar-brand" href="/">Between the Spreadsheets</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Analytic Types</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/gross_analytics">Finished Baskets</a>
+                <a class="dropdown-item" href="/store_search">Basket Making Supplies</a>
+              </div>
+          </li>
+        </ul>
+        <% if current_user %>
+          <button class="btn btn-link" type="button" name="logout"><%= link_to "Sign out", signout_path, id: "sign_out" %></button>
+            <span class="navbar-text">Logged in as <%= current_user.name %></span>
+        <% else %>
+          <a class="nav-link" href="/login"><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %><span class="sr-only">(current)</span></a>
+        <% end %>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

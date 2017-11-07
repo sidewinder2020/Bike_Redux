@@ -4,7 +4,7 @@ module Api
       class NumberOfOrdersController < ApplicationController
 
         def show
-          render json: Store.number_of_orders(store_params[:name])
+          render json Store.number_of_orders(store_params[:name])
         end
 
         private
