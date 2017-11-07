@@ -3,9 +3,9 @@ module Api
     module Sales
       class MostPopularSalesreasonsController < ApplicationController
 
-        # def index
-        #   render json: Sale.most_popular_salesreasons
-        # end
+        def index
+          render json: Salereason.most_popular_salesreasons
+        end
 
       end
     end

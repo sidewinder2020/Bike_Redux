@@ -17,14 +17,15 @@ Rails.application.routes.draw do
         get "most_popular", to: "most_popular#index"
         get "product_comments", to: "product_comments#index"
         get "worst_performing_categories", to: "worst_performing_category#show"
-        get "number_in_inventory", to: "number_in_inventory#show"
+        # get "number_in_inventory", to: "number_in_inventory#show"
 
        end
 
        namespace :sales do
-         get "highest_grossing_regions", to: "highest_grossing_regions#index"
+         get "sales_per_region", to: "sales_per_region#index"
          get "top_business_salespeople", to: "top_business_salespeople#index"
          get "most_popular_salesreasons", to: "most_popular_salesreasons#index"
+         get "difference_bt_this_year_last_year_sales", to: "difference_bt_this_year_last_year_sales#index"
        end
 
        namespace :stores do

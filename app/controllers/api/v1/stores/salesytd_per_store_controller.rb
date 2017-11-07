@@ -1,10 +1,10 @@
 module Api
   module V1
     module Stores
-      class NumberOfOrdersController < ApplicationController
+      class SalesytdPerStoreController < ApplicationController
 
         def show
-          render json: Store.number_of_orders(store_params[:name])
+          render json: Store.salesytd_per_store(store_params[:name])
         end
 
         private
