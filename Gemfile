@@ -21,11 +21,11 @@ gem 'faraday'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
-gem 'database_cleaner'
-gem 'factory_bot_rails'
 gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
   gem 'capybara'
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
