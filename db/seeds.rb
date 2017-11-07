@@ -1,5 +1,4 @@
 require 'csv'
-require 'pry'
 
 # Productinventory.destroy_all
 Salesorderheadersalesreason.destroy_all
