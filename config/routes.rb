@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
    namespace :api do
      namespace :v1 do
-       namespace :product do
+       namespace :products do
         get "find", to: "search#show"
         get "find_all", to: "search#index"
         get "most_popular", to: "most_popular#index"

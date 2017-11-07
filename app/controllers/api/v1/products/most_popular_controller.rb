@@ -3,9 +3,9 @@ module Api
     module Products
       class MostPopularController < ApplicationController
 
-        # def index
-        #   render json: Product.most_popular
-        # end
+        def index
+          render json: Product.most_popular
+        end
 
       end
     end
