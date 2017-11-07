@@ -3,9 +3,9 @@ module Api
     module Sales
       class TopBusinessSalespeopleController < ApplicationController
 
-        # def index
-        #   render json: Sale.top_business_salespeople
-        # end
+        def index
+          render json: Salesperson.top_business_salespeople
+        end
 
       end
     end
