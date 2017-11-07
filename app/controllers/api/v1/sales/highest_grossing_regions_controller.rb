@@ -3,9 +3,9 @@ module Api
     module Sales
       class HighestGrossingRegionsController < ApplicationController
 
-        # def index
-        #   render json: Sale.highest_grossing_regions
-        # end
+        def index
+          render json: Salesterritory.highest_grossing_regions
+        end
 
       end
     end

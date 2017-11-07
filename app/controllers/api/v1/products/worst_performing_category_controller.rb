@@ -3,9 +3,9 @@ module Api
     module Products
       class WorstPerformingCategoryController < ApplicationController
 
-        # def show
-        #   render json: Product.worst_performing_category
-        # end
+        def show
+          render json: Productcategory.worst_performing_category
+        end
 
       end
     end
