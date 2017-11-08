@@ -2,8 +2,20 @@ var data;
 var chart;
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(mostPopularProducts);
+google.charts.setOnLoadCallback(pageCasePickingThing);
 
+function pageCasePickingThing() {
+  switch (window.location.pathname) {
+    case "/gross_analytics":
+        mostPopularProducts();
+        break;
+    case "/store_search":
+        console.log("store_search")
+        break;
+    default:
+        console.log("default")
+    };
+};
 
 function mostPopularProducts() {
   fetch("../api/v1/products/most_popular", {
