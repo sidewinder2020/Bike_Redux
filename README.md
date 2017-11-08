@@ -88,7 +88,7 @@ Follow the /3000/ with any of the following endpoints (if you want to see the pu
  * Javascript
  * Jquery (AJAX calls & fetch calls implemented)
  * Google Charts
- * DataGrip (used to bring the initial 68 table/5 schema database down to a 13 table/1 schema database w/sql queries/views, also used to clean the tables before exporting to CSV's) 
+ * DataGrip
  * Postgresql (better than ActiveRecord on ALL levels)
 
 ### Contributing
