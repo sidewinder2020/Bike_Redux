@@ -125,7 +125,7 @@ function drawSalesPerRegionChart(sales) {
                  'width':1000,
                  'height':300};
 
-  chart = new google.visualization.BarChart(document.getElementById('region_sales_div'));
+  chart = new google.visualization.ColumnChart(document.getElementById('region_sales_div'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
   chart.draw(data, options);
 }
@@ -146,7 +146,7 @@ function drawTopBusinessSalespeopleChart(people) {
                  'width':1200,
                  'height':500};
 
-  chart = new google.visualization.BarChart(document.getElementById('top_salespeople_div'));
+  chart = new google.visualization.Histogram(document.getElementById('top_salespeople_div'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
   chart.draw(data, options);
 }
@@ -206,9 +206,9 @@ function drawMostPopularSalesReasonsChart(reasons) {
 
   var options = {'title':'Most Popular Reasons for Sales',
                  'width':1000,
-                 'height':300};
+                 'height':700};
 
-  chart = new google.visualization.BarChart(document.getElementById('popular_salesreasons_div'));
+  chart = new google.visualization.PieChart(document.getElementById('popular_salesreasons_div'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
   chart.draw(data, options);
 }
