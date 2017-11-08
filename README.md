@@ -8,7 +8,7 @@
   * Work with large schemas/complex relationships in rails
   * Use pure postgresql queries to pull business analytics from the subset, and build the API endpoints
   * Guard against SQL injection, in the store queries, where a dropdown is used to gather the id
-  * Consume the endpoints with AJAX and fetch calls (JavaScript/Jquery), and, using google charts, presented the analytics
+  * Consume the endpoints with AJAX and fetch calls (JavaScript/Jquery), and, using google charts, present the analytics
   * create custom rake tasks to handle pushing large seed files to Heroku
   
 ### Database Used
