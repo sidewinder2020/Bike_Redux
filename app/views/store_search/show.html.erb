@@ -1,4 +1,6 @@
 <h1> Store Search </h1>
+
 <%= form_tag("#", method: "get") do %>
 <%= select_tag "stores", options_from_collection_for_select(@stores, "id", "name") %>
+<input class="btn btn-secondary" type="submit" value="Submit">
 <% end %>
