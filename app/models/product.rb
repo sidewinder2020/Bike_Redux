@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  acts_as_copy_target
   belongs_to :productsubcategory, optional: true
   has_many :productreviews
   has_many :productlistpricehistories

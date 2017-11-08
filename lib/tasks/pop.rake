@@ -1,27 +1,44 @@
+require 'csv'
+
 namespace :pop do
+
+  task :cleardb => :environment do
+    Salesorderheadersalesreason.destroy_all
+    Salesreason.destroy_all
+    Salesorderdetail.destroy_all
+    Salesorderheader.destroy_all
+    Store.destroy_all
+    Salesperson.destroy_all
+    Salesterritory.destroy_all
+    Productlistpricehistory.destroy_all
+    Productreview.destroy_all
+    Product.destroy_all
+    Productsubcategory.destroy_all
+    Productcategory.destroy_all
+  end
 
   desc "populate productcategories table from CSV to postgresql table"
   task :productcategories => :environment do
     puts "You are running rake task in #{Rails.env} environment"
-    Productcategory.copy_from "db/csv/productcategory.csv",
-    :map => {
-      'id' => 'id',
-      'name' => 'name',
-      'rowguid' => 'rowguid',
-      'modifieddate' => 'modifieddate'}
+    productcategories = CSV.foreach "./db/csv/productcategory.csv", headers: true, header_converters: :symbol
+      productcategories.each do |row|
+        category = row.to_hash
+        category[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+        Productcategory.create!(category)
+      end
   end
 
-#   desc "populate customers table from CSV to postgresql table"
-#   task :customers => :environment do
-#   puts "You are running rake task in #{Rails.env} environment"
-#     Customer.copy_from "db/data/customers.csv",
-#     :map => {
-#       'id' => 'id',
-#       'first_name' => 'first_name',
-#       'last_name' => 'last_name',
-#       'created_at' => 'created_at',
-#       'updated_at' => 'updated_at'}
-#   end
+  desc "populate productsubcategories table from CSV to postgresql table"
+  task :productsubcategories => :environment do
+  puts "You are running rake task in #{Rails.env} environment"
+  productsubcategories = CSV.foreach "./db/csv/productsubcategory.csv", headers: true, header_converters: :symbol
+    productsubcategories.each do |row|
+      subcategory = row.to_hash
+      subcategory[:modifieddate] = Date.parse(row[:modifieddate]) if row[:modifieddate]
+      Productsubcategory.create!(subcategory)
+    end
+    puts "finished subcategories"
+  end
 #
 #   desc "populate items table from CSV to postgresql table"
 #   task :items => :environment do

@@ -1,4 +1,5 @@
 class Productcategory < ApplicationRecord
+  acts_as_copy_target
   has_many :productsubcategories
 
   def self.worst_performing_categories
