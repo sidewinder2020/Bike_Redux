@@ -10,6 +10,7 @@
   * Guard against SQL injection, in the store queries, where a dropdown is used to gather the id
   * Consume the endpoints with AJAX and fetch calls, and, using google charts, present them in an attractive manner
   * Work with Javascript/Jquery
+  * create custom rake tasks to handle pushing large seed files to Heroku
   
 ### Database Used
 
