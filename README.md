@@ -70,7 +70,7 @@ Follow the /3000/ with any of the following endpoints (if you want to see the pu
 
 ## Extensions (not yet added)
 
-* page for clients to submit csv's, their headers, and desired analytics (with desired chart style)
+* page for clients to submit csv's, their headers, and desired analytics (can request chart style)
 
 ## Authors
 
