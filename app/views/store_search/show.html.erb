@@ -2,8 +2,11 @@
 
 <%= form_tag("#", method: "get", class: "storeform") do %>
 <%= select_tag "stores", options_from_collection_for_select(@stores, "id", "name") %>
-<%= submit_tag %>
+<%= submit_tag "submit", id:"submit_button" %>
 <% end %>
 
 <div id="top_selling_products">
+</div>
+
+<div id="bonkers_amnt_of_info">
 </div>

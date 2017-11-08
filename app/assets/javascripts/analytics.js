@@ -61,15 +61,71 @@ function initialStoreAnalyticsFunction() {
 
 function createStoreCharts() {
   var storeId = $("#stores").val();
+  $("#submit_button").attr('disabled', false);
+  createTopSellingProducts(storeId);
+  createSalesYtd(storeId);
+  createTerritoryArea(storeId);
+  createNumberOfOrders(storeId);
+  createOrdersTotalCost(storeId);
+};
+
+function createTopSellingProducts(storeId) {
   $.ajax({
-     url: API + '/api/v1/stores/' + storeId + '/top_selling_products',
-     method: 'GET',
-   }).done(function(data) {
-     drawChartStore1(data)
-    //  $('#latest-posts').append('<p class="post">' + data.description + '</p>');
-   }).fail(function() {
-     handleEror();
-   })
+   url: API + '/api/v1/stores/' + storeId + '/top_selling_products',
+   method: 'GET',
+ }).done(function(data) {
+   drawChartStore1(data)
+ }).fail(function() {
+   handleEror();
+ })
+};
+
+function createSalesYtd(storeId) {
+  $.ajax({
+   url: API + '/api/v1/stores/' + storeId + '/salesytd_per_store',
+   method: 'GET',
+ }).done(function(data) {
+  console.log(data)
+  $('#bonkers_amnt_of_info').append('<p>Sales Year to Date Amount: $' + data[0].salesytd + '</p>');
+ }).fail(function() {
+   handleEror();
+ })
+};
+
+function createTerritoryArea(storeId) {
+  $.ajax({
+   url: API + '/api/v1/stores/' + storeId + '/territory_area',
+   method: 'GET',
+ }).done(function(data) {
+  console.log(data)
+  $('#bonkers_amnt_of_info').append('<p>Territory Area: ' + data[0].name + '</p>');
+ }).fail(function() {
+   handleEror();
+ })
+};
+
+function createNumberOfOrders(storeId) {
+  $.ajax({
+   url: API + '/api/v1/stores/' + storeId + '/number_of_orders',
+   method: 'GET',
+ }).done(function(data) {
+  console.log(data)
+  $('#bonkers_amnt_of_info').append('<p>Amount of Orders: ' + data[0].order_count + '</p>');
+ }).fail(function() {
+   handleEror();
+ })
+};
+
+function createOrdersTotalCost(storeId) {
+  $.ajax({
+   url: API + '/api/v1/stores/' + storeId + '/orders_total_cost',
+   method: 'GET',
+ }).done(function(data) {
+  console.log(data)
+  $('#bonkers_amnt_of_info').append('<p>Total Cost of Orders: $' + data[0].order_total + '</p>');
+ }).fail(function() {
+   handleEror();
+ })
 };
 
 function drawChartStore1(raw_data) {
@@ -83,7 +139,9 @@ function drawChartStore1(raw_data) {
   );
 
   var options = {
-    title: 'Top Selling Products'
+    title: 'Top Selling Products',
+    'width':1300,
+    'height':850
   };
 
   var chart = new google.visualization.PieChart(document.getElementById('top_selling_products'));
@@ -96,3 +154,7 @@ function preventDefaultForm() {
    event.preventDefault();
  });
 };
+
+var handleEror = function() {
+  $('#meh').append('<p class="post">Something went wrong. Try again later</p>');
+}
