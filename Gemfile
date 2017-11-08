@@ -23,9 +23,9 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'database_cleaner'
 
 group :development, :test do
-  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'capybara'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
