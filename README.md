@@ -91,9 +91,6 @@ Follow the /3000/ with any of the following endpoints (if you want to see the pu
  * DataGrip
  * Postgresql (better than ActiveRecord on ALL levels)
 
-### Contributing
-
- * You can't. You aren't important enough, nor do I acknowledge your authority.
 
 
 
