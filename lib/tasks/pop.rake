@@ -3,6 +3,7 @@ require 'database_cleaner'
 
 namespace :pop do
 
+  desc "cleans db with Database Cleaner"
   task :cleardb => :environment do
     DatabaseCleaner.clean_with(:truncation)
   end
