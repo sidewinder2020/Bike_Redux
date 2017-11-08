@@ -1,20 +1,10 @@
 require 'csv'
+require 'database_cleaner'
 
 namespace :pop do
 
   task :cleardb => :environment do
-    Salesorderheadersalesreason.destroy_all
-    Salesreason.destroy_all
-    Salesorderdetail.destroy_all
-    Salesorderheader.destroy_all
-    Store.destroy_all
-    Salesperson.destroy_all
-    Salesterritory.destroy_all
-    Productlistpricehistory.destroy_all
-    Productreview.destroy_all
-    Product.destroy_all
-    Productsubcategory.destroy_all
-    Productcategory.destroy_all
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   desc "populate productcategories table from CSV to postgresql table"
