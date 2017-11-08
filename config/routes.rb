@@ -15,10 +15,8 @@ Rails.application.routes.draw do
      namespace :v1 do
        namespace :products do
         get "most_popular", to: "most_popular#index"
-        get "product_comments", to: "product_comments#index"
-        get "worst_performing_categories", to: "worst_performing_category#show"
-        # get "number_in_inventory", to: "number_in_inventory#show"
-
+        # get "/:id/product_comments", to: "product_comments#index"
+        get "worst_performing_categories", to: "worst_performing_categories#show"
        end
 
        namespace :sales do
@@ -29,11 +27,11 @@ Rails.application.routes.draw do
        end
 
        namespace :stores do
-         get "salesytd_per_store", to: "salesytd_per_store#show"
-         get "top_selling_products", to: "top_selling_products#index"
-         get "territory_area", to: "territory_area#show"
-         get "number_of_orders", to: "number_of_orders#show"
-         get "orders_total_cost", to: "orders_total_cost#show"
+         get "/:id/salesytd_per_store", to: "salesytd_per_store#show"
+         get "/:id/top_selling_products", to: "top_selling_products#index"
+         get "/:id/territory_area", to: "territory_area#show"
+         get "/:id/number_of_orders", to: "number_of_orders#show"
+         get "/:id/orders_total_cost", to: "orders_total_cost#show"
        end
 
      end

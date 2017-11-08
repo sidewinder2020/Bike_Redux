@@ -4,13 +4,13 @@ module Api
       class TopSellingProductsController < ApplicationController
 
         def index
-          render json: Store.top_selling_products(store_params[:name])
+          render json: Store.top_selling_products(store_params[:id])
         end
 
         private
 
         def store_params
-          params.permit(:name)
+          params.permit(:id)
         end
 
       end

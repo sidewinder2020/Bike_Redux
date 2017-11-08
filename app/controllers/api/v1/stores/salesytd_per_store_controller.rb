@@ -4,13 +4,13 @@ module Api
       class SalesytdPerStoreController < ApplicationController
 
         def show
-          render json: Store.salesytd_per_store(store_params[:name])
+          render json: Store.salesytd_per_store(store_params[:id])
         end
 
         private
 
         def store_params
-          params.permit(:name)
+          params.permit(:id)
         end
 
       end

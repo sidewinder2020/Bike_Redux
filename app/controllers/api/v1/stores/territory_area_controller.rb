@@ -4,13 +4,13 @@ module Api
       class TerritoryAreaController < ApplicationController
 
         def show
-          render json: Store.territory_area(store_params[:name])
+          render json: Store.territory_area(store_params[:id])
         end
 
         private
 
         def store_params
-          params.permit(:name)
+          params.permit(:id)
         end
 
       end

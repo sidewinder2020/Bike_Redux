@@ -4,13 +4,13 @@ module Api
       class OrdersTotalCostController < ApplicationController
 
         def show
-          render json: Store.orders_total_cost(store_params[:name])
+          render json: Store.orders_total_cost(store_params[:id])
         end
 
         private
 
         def store_params
-          params.permit(:name)
+          params.permit(:id)
         end
 
       end

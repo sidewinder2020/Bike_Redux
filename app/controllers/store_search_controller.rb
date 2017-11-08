@@ -1,5 +1,5 @@
 class StoreSearchController < ApplicationController
   def show
-    @store = Store.find(params[:id])
+    @stores = Store.all
   end
 end
