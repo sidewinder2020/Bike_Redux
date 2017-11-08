@@ -45,7 +45,6 @@ function mostSalesPerRegion() {
    url: API + '/api/v1/sales/sales_per_region',
    method: 'GET',
  }).done(function(data) {
-   console.log(data)
    drawSalesPerRegionChart(data)
  }).fail(function() {
    handleEror();
@@ -53,19 +52,47 @@ function mostSalesPerRegion() {
 };
 
 function topBusinessSalespeople() {
-  console.log("topBusinessSalespeople")
+  $.ajax({
+   url: API + '/api/v1/sales/top_business_salespeople',
+   method: 'GET',
+ }).done(function(data) {
+   drawTopBusinessSalespeopleChart(data)
+ }).fail(function() {
+   handleEror();
+ })
 };
 
 function worstPerformingCategories() {
-  console.log("worstPerformingCategories")
+  $.ajax({
+   url: API + '/api/v1/products/worst_performing_categories',
+   method: 'GET',
+ }).done(function(data) {
+   drawWorstPerformingCategoriesChart(data)
+ }).fail(function() {
+   handleEror();
+ })
 };
 
 function mostPopularSalesReasons() {
-  console.log("mostPopularSalesReasons")
+  $.ajax({
+   url: API + '/api/v1/sales/most_popular_salesreasons',
+   method: 'GET',
+ }).done(function(data) {
+   drawMostPopularSalesReasonsChart(data)
+ }).fail(function() {
+   handleEror();
+ })
 };
 
 function yearToYearGrowth() {
-  console.log("yearToYearGrowth")
+  $.ajax({
+   url: API + '/api/v1/sales/difference_bt_this_year_last_year_sales',
+   method: 'GET',
+ }).done(function(data) {
+   drawYearToYearGrowthChart(data)
+ }).fail(function() {
+   handleEror();
+ })
 };
 
 function drawPopularProductChart(products) {
@@ -92,8 +119,6 @@ function drawSalesPerRegionChart(sales) {
   sales.forEach(function(value, key) {
     region_sales.push([value["name"],Number(value["salesytd"])])
   });
-  console.log("sales data")
-  console.log(sales)
   data.addRows(region_sales);
 
   var options = {'title':'Sales By Region',
@@ -101,6 +126,89 @@ function drawSalesPerRegionChart(sales) {
                  'height':300};
 
   chart = new google.visualization.BarChart(document.getElementById('region_sales_div'));
+  google.visualization.events.addListener(chart, 'select', selectHandler);
+  chart.draw(data, options);
+}
+
+function drawTopBusinessSalespeopleChart(people) {
+  data = new google.visualization.DataTable();
+  data.addColumn('string', 'Salesperson Id');
+  data.addColumn('number', 'Sales');
+  var people_sales = []
+  people.forEach(function(value, key) {
+    people_sales.push([String(value["id"]),Number(value["salesytd"])])
+  });
+  console.log("people data")
+  console.log(people)
+  data.addRows(people_sales);
+
+  var options = {'title':'Top Salespeople by Id and Sales',
+                 'width':1200,
+                 'height':500};
+
+  chart = new google.visualization.BarChart(document.getElementById('top_salespeople_div'));
+  google.visualization.events.addListener(chart, 'select', selectHandler);
+  chart.draw(data, options);
+}
+
+function drawYearToYearGrowthChart(growth) {
+  data = new google.visualization.DataTable();
+  data.addColumn('string', 'Salesperson Id');
+  data.addColumn('number', 'Year to Year Growth');
+  var growth_sales = []
+  growth.forEach(function(value, key) {
+    growth_sales.push([String(value["id"]),Number(value["difference"])])
+  });
+  console.log("growth data")
+  console.log(growth)
+  data.addRows(growth_sales);
+
+  var options = {'title':'Salespeople by Id and Year to Year Growth',
+                 'width':1200,
+                 'height':500};
+
+  chart = new google.visualization.BarChart(document.getElementById('year_to_year_div'));
+  google.visualization.events.addListener(chart, 'select', selectHandler);
+  chart.draw(data, options);
+}
+
+function drawWorstPerformingCategoriesChart(cats) {
+  data = new google.visualization.DataTable();
+  data.addColumn('string', 'Category');
+  data.addColumn('number', 'Orders');
+  var cats_orders = []
+  cats.forEach(function(value, key) {
+    cats_orders.push([value["name"],value["category_count"]])
+  });
+  console.log("cat data")
+  console.log(cats)
+  data.addRows(cats_orders);
+
+  var options = {'title':'Categories and Number of Orders arranged from Worst to Best',
+                 'width':1200,
+                 'height':500};
+
+  chart = new google.visualization.BarChart(document.getElementById('worst_categories_div'));
+  google.visualization.events.addListener(chart, 'select', selectHandler);
+  chart.draw(data, options);
+}
+
+function drawMostPopularSalesReasonsChart(reasons) {
+  data = new google.visualization.DataTable();
+  data.addColumn('string', 'Reason');
+  data.addColumn('number', 'Sale Count');
+  var sales_reasons = []
+  reasons.forEach(function(value, key) {
+    sales_reasons.push([value["reasontype"],value["reason_count"]])
+  });
+  data.addRows(sales_reasons);
+  console.log(reasons)
+
+  var options = {'title':'Most Popular Reasons for Sales',
+                 'width':1000,
+                 'height':300};
+
+  chart = new google.visualization.BarChart(document.getElementById('popular_salesreasons_div'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
   chart.draw(data, options);
 }
