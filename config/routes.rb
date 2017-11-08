@@ -15,7 +15,6 @@ Rails.application.routes.draw do
      namespace :v1 do
        namespace :products do
         get "most_popular", to: "most_popular#index"
-        # get "/:id/product_comments", to: "product_comments#index"
         get "worst_performing_categories", to: "worst_performing_categories#show"
        end
 

@@ -8,7 +8,7 @@ google.charts.setOnLoadCallback(pageCasePickingThing);
 function pageCasePickingThing() {
   switch (window.location.pathname) {
     case "/gross_analytics":
-        mostPopularProducts();
+        initialGrossAnalyticsFunction();
         break;
     case "/store_search":
         initialStoreAnalyticsFunction()
@@ -16,6 +16,15 @@ function pageCasePickingThing() {
     default:
         console.log("default")
     };
+};
+
+function initialGrossAnalyticsFunction() {
+  mostPopularProducts();
+  mostSalesPerRegion();
+  topBusinessSalespeople();
+  worstPerformingCategories();
+  mostPopularSalesReasons();
+  yearToYearGrowth();
 };
 
 function mostPopularProducts() {
@@ -28,10 +37,38 @@ function mostPopularProducts() {
       products.push([value["name"],value["order_count"]])
     });
     return products
-  }).then(products => drawChart(products))
+  }).then(products => drawPopularProductChart(products))
 };
 
-function drawChart(products) {
+function mostSalesPerRegion() {
+  $.ajax({
+   url: API + '/api/v1/sales/sales_per_region',
+   method: 'GET',
+ }).done(function(data) {
+   console.log(data)
+   drawSalesPerRegionChart(data)
+ }).fail(function() {
+   handleEror();
+ })
+};
+
+function topBusinessSalespeople() {
+  console.log("topBusinessSalespeople")
+};
+
+function worstPerformingCategories() {
+  console.log("worstPerformingCategories")
+};
+
+function mostPopularSalesReasons() {
+  console.log("mostPopularSalesReasons")
+};
+
+function yearToYearGrowth() {
+  console.log("yearToYearGrowth")
+};
+
+function drawPopularProductChart(products) {
   data = new google.visualization.DataTable();
   data.addColumn('string', 'Product');
   data.addColumn('number', 'Orders');
@@ -43,6 +80,27 @@ function drawChart(products) {
                  'height':300};
 
   chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  google.visualization.events.addListener(chart, 'select', selectHandler);
+  chart.draw(data, options);
+}
+
+function drawSalesPerRegionChart(sales) {
+  data = new google.visualization.DataTable();
+  data.addColumn('string', 'Region');
+  data.addColumn('number', 'Sales');
+  var region_sales = []
+  sales.forEach(function(value, key) {
+    region_sales.push([value["name"],Number(value["salesytd"])])
+  });
+  console.log("sales data")
+  console.log(sales)
+  data.addRows(region_sales);
+
+  var options = {'title':'Sales By Region',
+                 'width':1000,
+                 'height':300};
+
+  chart = new google.visualization.BarChart(document.getElementById('region_sales_div'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
   chart.draw(data, options);
 }
