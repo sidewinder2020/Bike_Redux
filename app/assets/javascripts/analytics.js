@@ -42,7 +42,7 @@ function mostPopularProducts() {
 
 function mostSalesPerRegion() {
   $.ajax({
-   url: API + '/api/v1/sales/sales_per_region',
+   url: '../api/v1/sales/sales_per_region',
    method: 'GET',
  }).done(function(data) {
    drawSalesPerRegionChart(data)
