@@ -1,5 +1,6 @@
 var data;
 var chart;
+var API = "http://localhost:3000";
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(pageCasePickingThing);
@@ -10,7 +11,7 @@ function pageCasePickingThing() {
         mostPopularProducts();
         break;
     case "/store_search":
-        console.log("store_search")
+        initialStoreAnalyticsFunction()
         break;
     default:
         console.log("default")
@@ -51,3 +52,47 @@ function selectHandler() {
   var value = data.getValue(selectedItem.row, 0);
   alert('The user selected ' + value);
 }
+
+function initialStoreAnalyticsFunction() {
+  preventDefaultForm();
+   $(".storeform input[type='submit']").on('click', createStoreCharts);
+
+};
+
+function createStoreCharts() {
+  var storeId = $("#stores").val();
+  $.ajax({
+     url: API + '/api/v1/stores/' + storeId + '/top_selling_products',
+     method: 'GET',
+   }).done(function(data) {
+     drawChartStore1(data)
+    //  $('#latest-posts').append('<p class="post">' + data.description + '</p>');
+   }).fail(function() {
+     handleEror();
+   })
+};
+
+function drawChartStore1(raw_data) {
+  var products = [["name", "sold"]]
+  raw_data.forEach(function(value, key) {
+    products.push([value["name"],value["order_count"]])
+  });
+  console.log(products)
+  var data = google.visualization.arrayToDataTable(
+    products
+  );
+
+  var options = {
+    title: 'Top Selling Products'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('top_selling_products'));
+
+  chart.draw(data, options);
+}
+
+function preventDefaultForm() {
+  $('form').on('submit', function(event){
+   event.preventDefault();
+ });
+};
