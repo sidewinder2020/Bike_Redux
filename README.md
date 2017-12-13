@@ -8,8 +8,8 @@
   * Work with large schemas/complex relationships in rails
   * Use pure postgresql queries to pull business analytics from the subset, and build the API endpoints
   * Guard against SQL injection, in the store queries, where a dropdown is used to gather the id
-  * Consume the endpoints with AJAX and fetch calls, and, using google charts, present them in an attractive manner
-  * Work with Javascript/Jquery
+  * Consume the endpoints with AJAX and fetch calls (JavaScript/Jquery), and, using google charts, present the analytics
+  * create custom rake tasks to handle pushing large seed files to Heroku
   
 ### Database Used
 
@@ -70,7 +70,7 @@ Follow the /3000/ with any of the following endpoints (if you want to see the pu
 
 ## Extensions (not yet added)
 
-* page for clients to submit csv's, their headers, and desired analytics (with desired chart style)
+* page for clients to submit csv's, their headers, and desired analytics (can request chart style)
 
 ## Authors
 
@@ -88,12 +88,9 @@ Follow the /3000/ with any of the following endpoints (if you want to see the pu
  * Javascript
  * Jquery (AJAX calls & fetch calls implemented)
  * Google Charts
- * DataGrip (used to bring the initial 68 table/5 schema database down to a 13 table/1 schema database w/sql queries/views, also used to clean the tables before exporting to CSV's) 
+ * DataGrip
  * Postgresql (better than ActiveRecord on ALL levels)
 
-### Contributing
-
- * You can't. You aren't important enough, nor do I acknowledge your authority.
 
 
 
